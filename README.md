@@ -30,42 +30,89 @@ El participante aprenderá a:
 
 El repositorio está organizado según el cronograma del taller:
 
-### [Módulo 1: Fundamentos y Adquisición](./Modulo_01_Fundamentos)
+### [Módulo 1: Fundamentos y Preservación de Evidencia
 
-* Protocolos de Cadena de Custodia.
-* Metodología de Preservación de Evidencia (RFC 3227).
-* Herramientas de Triage y Adquisición (KAPE, FTK Imager).
+_La base de la investigación. Cómo aseguramos la escena y los datos._
 
-### [Módulo 2: Memory Forensics](./Modulo_02_Memoria)
+- Protocolos de Cadena de Custodia y RFC 3227.
+    
+- Metodología de Adquisición Forense: Imágenes de disco y volcados de memoria.
+    
+- Herramientas de preservación: **KAPE** y **FTK Imager**.
+    
 
-* Análisis de Memoria RAM con Volatility 3.
-* Identificación de procesos maliciosos (`pslist`, `pstree`) y conexiones de red (`netscan`).
-* Extracción de payloads y análisis de inyección de código.
+### [Módulo 2: Memory Forensics
 
-### [Módulo 3: Disk Artifacts & Carving](./Modulo_03_Disco)
+_Análisis de lo volátil. Cazando procesos y conexiones en RAM._
 
-* Análisis de la Master File Table (`$MFT`).
-* Artefactos de Registro (System, Software, NTUSER.DAT).
-* Evidencia de Ejecución (Prefetch, ShimCache, AmCache).
-* Recuperación de datos borrados (File Carving).
+- Uso de **Volatility 3** para inspección de memoria.
+    
+- Identificación de procesos maliciosos (`pslist`, `pstree`) e inyecciones de código.
+    
+- Análisis de conexiones de red (`netscan`) y sockets residuales.
+    
 
-### [Módulo 4: Log Analysis & Hunting](./Modulo_04_Logs)
+### [Módulo 3: Disk Artifacts & System Internals 
+_Análisis del rastro persistente en el sistema de archivos._
 
-* Parsing de Event Logs de Windows (.evtx).
-* Detección de Movimiento Lateral y Escalada de Privilegios.
-* Uso de Sysmon para hunting avanzado.
+- Estructuras NTFS: Análisis de la **$MFT**.
+    
+- Artefactos de Registro: Hives SYSTEM, SOFTWARE y NTUSER.DAT.
+    
+- Evidencia de Ejecución: Prefetch, ShimCache y AmCache para reconstruir la línea de tiempo de ejecución.
+    
 
-### [Módulo 5: Timeline Analysis](./Modulo_05_Timeline)
+### [Módulo 4: Browser & Email Forensics
 
-* Creación de Super Timelines.
-* Correlación de artefactos dispares.
-* Mapeo de TTPs al framework MITRE ATT&CK.
+_Perfilamiento digital y vectores de entrada._
 
-### [Módulo 6: Reporte y Cierre](./Modulo_06_Reporte)
+- **Browser Forensics:** Análisis de bases de datos **SQLite** (`places.sqlite`, `History`) para reconstruir hábitos e intención (`search?q=`).
+    
+- **Email Forensics:** Trazabilidad de cabeceras SMTP (Headers) y detección de Spoofing (SPF/DKIM).
+    
+- Correlación de actividad de usuario con el incidente.
+    
 
-* Estrategias de Contención y Erradicación.
-* Estructura de Reportes Forenses Ejecutivos y Técnicos.
-* Simulacro final (Mini-CTF).
+
+
+---
+
+### [Módulo 5: Mobile Incident Response & Live Triage (Clase Extendida)](https://www.google.com/search?q=./Modulo_05_Mobile_IR)
+
+_Investigación en dispositivos móviles corporativos y BYOD. Rompiendo el Sandbox._
+
+- **Arquitectura Android:** Kernel, Sandbox de aplicaciones y gestión de permisos (`/data`).
+    
+- **Adquisición Táctica (Live Triage):**
+    
+    - Uso de **ADB (Android Debug Bridge)** para reconocimiento en vivo.
+        
+    - Control y proyección de pantalla con **Scrcpy**.
+        
+    - Extracción de paquetería y logs sin acceso root total.
+        
+- **Threat Hunting en Mensajería (WhatsApp):**
+    
+    - Extracción y descifrado de bases de datos `msgstore.db`.
+        
+    - **SQL Hunting:** Queries para detectar fuga de información sensible, malware compartido y exfiltración de datos.
+        
+
+### [Módulo 6: Reporting, IOCs & Containment](https://www.google.com/search?q=./Modulo_06_Reporte)
+
+_Del análisis forense a la respuesta defensiva._
+
+- **Generación de Inteligencia:** Conversión de evidencia (hallada en RAM/Disco/Móvil) en **IoCs** (Indicadores de Compromiso) accionables.
+    
+- **Estrategias de Contención:** Medidas de aislamiento y bloqueo basadas en los hallazgos del peritaje.
+    
+- **El Informe Pericial y de Incidente:**
+    
+    - Estructura técnica vs. ejecutiva.
+        
+    - Presentación de la línea de tiempo del ataque.
+        
+    - Simulacro de defensa de hallazgos.
 
 ## ⚙️Requisitos del Laboratorio
 
